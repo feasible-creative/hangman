@@ -39,21 +39,12 @@ const alphabet = [
   "z",
 ];
 
-const keyboardContainer = document.querySelector("#container");
-
-for (i = 0; i <= alphabet.length - 1; i++) {
-  const keys = document.createElement("button");
-  keys.textContent = alphabet[i];
-  keys.classList.add("keyboard");
-  keyboardContainer.appendChild(keys);
-
 startButton.addEventListener("click", () => {
-  
   const randomIndex = Math.floor(Math.random() * words.length);
   const randomWord = words[randomIndex];
   // console.log(randomWord);
 
-
+  const keyboardContainer = document.querySelector("#container");
   const guess = document.querySelector("#guesses");
 
   const letters = [...randomWord];
@@ -62,6 +53,11 @@ startButton.addEventListener("click", () => {
 
   // console.log(letters);
 
+  for (i = 0; i <= alphabet.length - 1; i++) {
+    const keys = document.createElement("button");
+    keys.textContent = alphabet[i];
+    keys.classList.add("keyboard");
+    keyboardContainer.appendChild(keys);
 
     keys.addEventListener("click", () => {
       if (letters.includes(keys.textContent)) {
@@ -86,5 +82,5 @@ startButton.addEventListener("click", () => {
 
       keys.textContent = "";
     });
-  })
-};
+  }
+});
