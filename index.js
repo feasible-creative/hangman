@@ -9,7 +9,7 @@ const words = ["car", "boat", "plane"];
 const word = document.querySelector("#word");
 const hangman = document.querySelector("#hangman");
 
-const startButton = document.querySelector('#start');
+const startButton = document.querySelector("#start");
 const alphabet = [
   "a",
   "b",
@@ -39,22 +39,7 @@ const alphabet = [
   "z",
 ];
 
-
-
-startButton.addEventListener('click', () => {
-
-const randomIndex = Math.floor(Math.random() * words.length);
-const randomWord = words[randomIndex];
-// console.log(randomWord);
-
 const keyboardContainer = document.querySelector("#container");
-const guess = document.querySelector("#guesses");
-
-const letters = [...randomWord];
-word.textContent = letters.join(" ");
-
-// console.log(letters);
-
 
 for (i = 0; i <= alphabet.length - 1; i++) {
   const keys = document.createElement("button");
@@ -62,28 +47,44 @@ for (i = 0; i <= alphabet.length - 1; i++) {
   keys.classList.add("keyboard");
   keyboardContainer.appendChild(keys);
 
-  keys.addEventListener("click", () => {
-    if (letters.includes(keys.textContent)) {
-      console.log("YES");
-      word.style.color = "gold";
-    }
+startButton.addEventListener("click", () => {
+  
+  const randomIndex = Math.floor(Math.random() * words.length);
+  const randomWord = words[randomIndex];
+  // console.log(randomWord);
 
-    // console.log(letters[0])
 
-    console.log(keys.textContent);
-    guess.textContent += keys.textContent;
-    // console.log(randomWord.includes(keys.textContent));
+  const guess = document.querySelector("#guesses");
 
-    if (!randomWord.includes(keys.textContent)) {
-      hangman.textContent += "add body part";
-    }
+  const letters = [...randomWord];
+  // word.textContent = letters.join(" ");
 
-    if (keys.textContent === "") {
-      alert("Try a different letter");
-    }
 
-    keys.textContent = "";
-  });
-}
+  // console.log(letters);
 
-});
+
+    keys.addEventListener("click", () => {
+      if (letters.includes(keys.textContent)) {
+        console.log("YES");
+        word.textContent = letters.join(" ")
+        word.style.color = "gold";
+      }
+
+      // console.log(letters[0])
+
+      console.log(keys.textContent);
+      guess.textContent += keys.textContent;
+      // console.log(randomWord.includes(keys.textContent));
+
+      if (!randomWord.includes(keys.textContent)) {
+        hangman.textContent += "O";
+      }
+
+      if (keys.textContent === "") {
+        alert("Try a different letter");
+      }
+
+      keys.textContent = "";
+    });
+  })
+};
