@@ -40,11 +40,16 @@ const alphabet = [
 ];
 
 startButton.addEventListener("click", () => {
+  startButton.style.display = "none"
+
+
+
   const randomIndex = Math.floor(Math.random() * words.length);
   const randomWord = words[randomIndex];
   // console.log(randomWord);
 
   const keyboardContainer = document.querySelector("#container");
+ 
   const guess = document.querySelector("#guesses");
 
   const letters = [...randomWord];

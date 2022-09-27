@@ -16,12 +16,14 @@
 
   button{
     cursor: pointer;
+    font-weight: bold;
   }
   
   #buttonContainer{
       display: flex;
       justify-content: center;
       margin: 1rem 0rem;
+      height: 3rem;
   }
   
   #start{
